@@ -11,7 +11,7 @@ namespace FHBank.Domain.AggregatesModel
         public Account(string holder, decimal balance)
         {
             Holder = holder;
-            Balance = balance;
+            Deposit(balance);
         }
 
         public void Withdraw(decimal amount)

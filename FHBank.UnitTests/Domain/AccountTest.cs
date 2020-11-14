@@ -59,5 +59,14 @@ namespace FHBank.UnitTests.Domain
             // Act - Assert
             Assert.Throws<FHBankDomainException>(() => account.Deposit(amount));
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-5000.99)]
+        public void TestCreateAccountWhitInvalidAmountBalanceAndReturnsException(decimal initialBalance)
+        {
+            // Act - Assert
+            Assert.Throws<FHBankDomainException>(() => new Account(It.IsAny<string>(), initialBalance));
+        }
     }
 }
