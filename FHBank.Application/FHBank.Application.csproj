@@ -13,4 +13,8 @@
     <ProjectReference Include="..\FHBank.Infrastructure\FHBank.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -28,6 +28,7 @@ namespace FHBank.UnitTests.Application.Commands
             // Act
             var result = await handler.Handle(It.IsAny<CreateAccountCommand>(), new CancellationToken());
             // Assert
+            _accountRepositoryMock.Verify(x => x.InsertOneAsync(It.IsAny<Account>()), Times.Once);
             Assert.False(result);
         }
 
@@ -42,6 +43,7 @@ namespace FHBank.UnitTests.Application.Commands
             // Act
             var result = await handler.Handle(request, new CancellationToken());
             // Assert
+            _accountRepositoryMock.Verify(x => x.InsertOneAsync(It.IsAny<Account>()), Times.Once);
             Assert.True(result);
         }
     }
