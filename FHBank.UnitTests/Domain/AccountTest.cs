@@ -1,5 +1,6 @@
 ﻿using FHBank.Domain.AggregatesModel;
 using FHBank.Domain.Exceptions;
+using Moq;
 using Xunit;
 
 namespace FHBank.UnitTests.Domain
@@ -13,7 +14,7 @@ namespace FHBank.UnitTests.Domain
         public void TestWithdrawWhitValidAmount(decimal initialBalance, decimal amount, decimal expected)
         {
             // Arrange
-            var account = new Account(initialBalance);
+            var account = new Account(It.IsAny<string>(), initialBalance);
             // Act
             account.Withdraw(amount);
             // Assert
@@ -26,7 +27,7 @@ namespace FHBank.UnitTests.Domain
         public void TestWithdrawWhitInvalidAmountAndReturnsException(decimal initialBalance, decimal amount)
         {
             // Arrange
-            var account = new Account(initialBalance);
+            var account = new Account(It.IsAny<string>(), initialBalance);
 
             // Act - Assert
             Assert.Throws<FHBankDomainException>(() => account.Withdraw(amount));
@@ -39,7 +40,7 @@ namespace FHBank.UnitTests.Domain
         {
             // Arrange
             var expected = initialBalance + amount;
-            var account = new Account(initialBalance);
+            var account = new Account(It.IsAny<string>(), initialBalance);
 
             // Act
             account.Deposit(amount);
@@ -53,7 +54,7 @@ namespace FHBank.UnitTests.Domain
         public void TestDepositWhitInvalidAmountAndReturnsException(decimal initialBalance, decimal amount)
         {
             // Arrange
-            var account = new Account(initialBalance);
+            var account = new Account(It.IsAny<string>(), initialBalance);
 
             // Act - Assert
             Assert.Throws<FHBankDomainException>(() => account.Deposit(amount));
