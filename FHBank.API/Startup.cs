@@ -1,3 +1,4 @@
+using FHBank.API.Application.Mutations.Account;
 using FHBank.Application.Queries;
 using FHBank.Domain.SeedWork;
 using FHBank.Infrastructure;
@@ -85,7 +86,10 @@ namespace FHBank.API
                         .AddServices(sp)
                         .AddQueryType(d => d.Name("Query"))
                         .AddType<AccountQueries>()
-                        .Create());
+                        .AddMutationType(d => d.Name("Mutation"))
+                        .AddType<AccountMutations>()
+                        .Create(),
+                    new QueryExecutionOptions { ForceSerialExecution = true });
             return services;
         }
 

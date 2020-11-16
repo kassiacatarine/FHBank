@@ -1,7 +1,7 @@
-﻿using FHBank.Application.Payloads;
+﻿using FHBank.API.Application.Mutations.Account;
 using MediatR;
 
-namespace FHBank.Application.Commands
+namespace FHBank.API.Application.Commands
 {
     public class WithdrawAccountCommand : IRequest<AccountPayload>
     {

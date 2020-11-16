@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHBank.UnitTests", "FHBank.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHBank.Domain", "FHBank.Domain\FHBank.Domain.csproj", "{6AEA92A0-38E3-423F-8A7C-CAD5A0AA0C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHBank.Application", "FHBank.Application\FHBank.Application.csproj", "{943EF8B5-65D7-4E00-9FAD-50B34E9C0C2B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHBank.Infrastructure", "FHBank.Infrastructure\FHBank.Infrastructure.csproj", "{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHBank.Infrastructure", "FHBank.Infrastructure\FHBank.Infrastructure.csproj", "{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{6AEA92A0-38E3-423F-8A7C-CAD5A0AA0C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AEA92A0-38E3-423F-8A7C-CAD5A0AA0C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AEA92A0-38E3-423F-8A7C-CAD5A0AA0C50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{943EF8B5-65D7-4E00-9FAD-50B34E9C0C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{943EF8B5-65D7-4E00-9FAD-50B34E9C0C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{943EF8B5-65D7-4E00-9FAD-50B34E9C0C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{943EF8B5-65D7-4E00-9FAD-50B34E9C0C2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Release|Any CPU.ActiveCfg = Release|Any CPU

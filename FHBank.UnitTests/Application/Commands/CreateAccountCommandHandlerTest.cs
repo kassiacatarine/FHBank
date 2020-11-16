@@ -1,7 +1,7 @@
-﻿using FHBank.Application.Commands;
+﻿using FHBank.API.Application.Commands;
 using FHBank.Domain.AggregatesModel;
 using FHBank.Infrastructure.Repositories;
-using MediatR;
+using FluentAssertions;
 using Moq;
 using System;
 using System.Threading;
@@ -19,24 +19,10 @@ namespace FHBank.UnitTests.Application.Commands
         }
 
         [Fact]
-        public async Task TestHandleCreateAccountAndReturnsFalseIfIsNotPersisted()
-        {
-            // Arrange
-            _accountRepositoryMock.Setup(x => x.InsertOneAsync(It.IsAny<Account>()))
-                .Throws(new InvalidOperationException());
-            var handler = new CreateAccountCommandHandler(_accountRepositoryMock.Object);
-            // Act
-            var result = await handler.Handle(It.IsAny<CreateAccountCommand>(), new CancellationToken());
-            // Assert
-            _accountRepositoryMock.Verify(x => x.InsertOneAsync(It.IsAny<Account>()), Times.Once);
-            Assert.False(result);
-        }
-
-        [Fact]
         public async Task TestHandleCreateAccountAndReturnsTrueIfIsPersisted()
         {
             // Arrange
-            var request = new CreateAccountCommand("User", 100M);
+            var request = new CreateAccountCommand(100M);
             _accountRepositoryMock.Setup(x => x.InsertOneAsync(It.IsAny<Account>()))
                 .Returns(Task.CompletedTask);
             var handler = new CreateAccountCommandHandler(_accountRepositoryMock.Object);
@@ -44,7 +30,8 @@ namespace FHBank.UnitTests.Application.Commands
             var result = await handler.Handle(request, new CancellationToken());
             // Assert
             _accountRepositoryMock.Verify(x => x.InsertOneAsync(It.IsAny<Account>()), Times.Once);
-            Assert.True(result);
+            result.Should()
+                .NotBeNull();
         }
     }
 }

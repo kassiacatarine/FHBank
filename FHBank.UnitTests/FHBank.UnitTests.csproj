@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Moq" Version="4.15.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
@@ -15,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FHBank.Application\FHBank.Application.csproj" />
+    <ProjectReference Include="..\FHBank.API\FHBank.API.csproj" />
     <ProjectReference Include="..\FHBank.Domain\FHBank.Domain.csproj" />
     <ProjectReference Include="..\FHBank.Infrastructure\FHBank.Infrastructure.csproj" />
   </ItemGroup>

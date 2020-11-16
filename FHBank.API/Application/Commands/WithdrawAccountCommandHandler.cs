@@ -1,15 +1,14 @@
-﻿using FHBank.Application.Payloads;
+﻿using FHBank.API.Application.Mutations.Account;
 using FHBank.Domain.AggregatesModel;
 using FHBank.Domain.Exceptions;
 using FHBank.Infrastructure.Repositories;
 using HotChocolate;
 using HotChocolate.Execution;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FHBank.Application.Commands
+namespace FHBank.API.Application.Commands
 {
     public class WithdrawAccountCommandHandler : IRequestHandler<WithdrawAccountCommand, AccountPayload>
     {
