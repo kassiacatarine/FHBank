@@ -5,6 +5,7 @@ namespace FHBank.Domain.AggregatesModel
 {
     public class Account : Entity
     {
+        public int Number { get; private set; }
         public string Holder { get; private set; }
         public decimal Balance { get; private set; }
 

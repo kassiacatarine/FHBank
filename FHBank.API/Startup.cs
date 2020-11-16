@@ -1,16 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FHBank.Application.Queries;
+using FHBank.Domain.SeedWork;
+using FHBank.Infrastructure;
+using FHBank.Infrastructure.Repositories;
+using HotChocolate;
+using HotChocolate.AspNetCore;
+using HotChocolate.AspNetCore.Playground;
+using HotChocolate.Execution.Configuration;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 
 namespace FHBank.API
 {
@@ -29,7 +31,9 @@ namespace FHBank.API
             services.AddControllers();
 
             services
-                .AddCustomMediatR();
+                .AddCustomMongoDbContext(Configuration)
+                .AddCustomMediatR()
+                .AddCustomGraphQL();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +43,13 @@ namespace FHBank.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseGraphQL("/api")
+                .UsePlayground(new PlaygroundOptions
+                {
+                    QueryPath = "/api",
+                    Path = "/playground",
+                });
 
             app.UseHttpsRedirection();
 
@@ -55,6 +66,29 @@ namespace FHBank.API
 
     static class CustomExtensionsMethods
     {
+        public static IServiceCollection AddCustomMongoDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<DbSettings>(configuration.GetSection("QueriesDb"));
+
+            services.AddSingleton<IMongoClient, MongoClient>(
+                _ => new MongoClient(configuration.GetSection("QueriesDb:ConnectionString").Value));
+            services.AddTransient<IQueriesContext, QueriesContext>();
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+            return services;
+        }
+
+        public static IServiceCollection AddCustomGraphQL(this IServiceCollection services)
+        {
+            services
+                .AddGraphQL(sp =>
+                    SchemaBuilder.New()
+                        .AddServices(sp)
+                        .AddQueryType(d => d.Name("Query"))
+                        .AddType<AccountQueries>()
+                        .Create());
+            return services;
+        }
+
         public static IServiceCollection AddCustomMediatR(this IServiceCollection services)
         {
             services.AddMediatR(typeof(Startup));

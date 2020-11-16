@@ -5,16 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="10.5.3" />
+    <PackageReference Include="HotChocolate.Types.Filters" Version="10.5.3" />
+    <PackageReference Include="HotChocolate.Types.Selections" Version="10.5.3" />
+    <PackageReference Include="HotChocolate.Types.Sorting" Version="10.5.3" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FHBank.Infrastructure\FHBank.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>

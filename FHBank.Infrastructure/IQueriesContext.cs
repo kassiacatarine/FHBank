@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace FHBank.Infrastructure
 {
-    public interface IFHBankContext
+    public interface IQueriesContext
     {
         public IMongoCollection<Account> Accounts { get; }
         public IMongoCollection<T> GetCollection<T>() where T : Entity;

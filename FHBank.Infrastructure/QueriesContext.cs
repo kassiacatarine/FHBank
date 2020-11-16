@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace FHBank.Infrastructure
 {
-    public class FHBankContext
+    public class QueriesContext : IQueriesContext
     {
         private readonly IMongoDatabase _db;
         private Dictionary<Type, string> DocumentNames { get; } = new Dictionary<Type, string>();
-        public FHBankContext(IOptions<DbSettings> settings, IMongoClient client)
+        public QueriesContext(IOptions<DbSettings> settings, IMongoClient client)
         {
             _db = client.GetDatabase(settings.Value.Database);
             DocumentNames.Add(typeof(Account), $"accounts");
