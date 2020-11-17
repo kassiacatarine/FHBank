@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  fhbank.api:
+    image: ${DOCKER_REGISTRY-}fhbankapi
+    build:
+      context: .
+      dockerfile: FHBank.API/Dockerfile

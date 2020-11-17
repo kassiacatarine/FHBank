@@ -70,9 +70,9 @@ namespace FHBank.API
         public static IServiceCollection AddCustomMongoDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<DbSettings>(configuration.GetSection("QueriesDb"));
-
+            var settings = configuration.GetSection("QueriesDb").Get<DbSettings>();
             services.AddSingleton<IMongoClient, MongoClient>(
-                _ => new MongoClient(configuration.GetSection("QueriesDb:ConnectionString").Value));
+                _ => new MongoClient(settings.ConnectionString));
             services.AddTransient<IQueriesContext, QueriesContext>();
             services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
             return services;

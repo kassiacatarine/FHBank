@@ -8,6 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["FHBank.API/FHBank.API.csproj", "FHBank.API/"]
+COPY ["FHBank.Infrastructure/FHBank.Infrastructure.csproj", "FHBank.Infrastructure/"]
+COPY ["FHBank.Domain/FHBank.Domain.csproj", "FHBank.Domain/"]
 RUN dotnet restore "FHBank.API/FHBank.API.csproj"
 COPY . .
 WORKDIR "/src/FHBank.API"

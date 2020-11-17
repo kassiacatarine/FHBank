@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHBank.Domain", "FHBank.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FHBank.Infrastructure", "FHBank.Infrastructure\FHBank.Infrastructure.csproj", "{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BA6CB0BB-A17A-4DC2-86B1-E20B92741E0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF5EB073-D99C-4D25-8975-EC26DB9AABC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6CB0BB-A17A-4DC2-86B1-E20B92741E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6CB0BB-A17A-4DC2-86B1-E20B92741E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6CB0BB-A17A-4DC2-86B1-E20B92741E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6CB0BB-A17A-4DC2-86B1-E20B92741E0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
